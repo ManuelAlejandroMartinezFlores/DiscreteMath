@@ -1,3 +1,8 @@
+'''
+Manuel Alejandro Martínez Flores
+Exponenciación en aritmética modular
+'''
+
 import numpy as np 
 
 
@@ -10,8 +15,8 @@ def power_bin(b, ex, n):
     total = 1 
     b = b % n 
     
-    for i in range(len(repr)):
-        if int(repr[i]):
+    for i in repr:
+        if int(i):
             if b == 1 : return total
             if b == 0 : return 0 
             total = (total * b) % n 
