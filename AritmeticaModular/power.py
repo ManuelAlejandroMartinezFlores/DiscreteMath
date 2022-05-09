@@ -3,15 +3,13 @@ Manuel Alejandro Martínez Flores
 Exponenciación en aritmética modular
 '''
 
-import numpy as np 
-
 
 def power_bin(b, ex, n):
     '''
         b ^ ex (mod n)
         Utiliza representacion binaria
     '''
-    repr = np.base_repr(ex, base = 2)
+    repr = bin(ex)[2:]
     total = 1 
     b = b % n 
     
