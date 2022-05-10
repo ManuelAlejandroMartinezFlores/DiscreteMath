@@ -21,8 +21,6 @@ def power_bin(b, ex, n):
         b = (b * b) % n 
     return total
 
-assert power_bin(7, 45, 17) == 6 
-
 
 
 def power_rec(b, ex, n):
@@ -35,7 +33,6 @@ def power_rec(b, ex, n):
     else:
         return (b * power_rec(b, ex - 1, n)) % n 
     
-assert power_rec(7, 45, 17) == 6 
 
 
 
@@ -48,11 +45,7 @@ def power_rec2(b, ex, n):
     if ex == 0 :
         return 1
     if ex % 2 == 0:
-        return power_rec(b, ex/2, n) ** 2 % n 
+        return power_rec2(b, ex/2, n) ** 2 % n 
     else :
-        return b * power_rec(b, (ex - 1)/2, n) ** 2 % n 
+        return b * power_rec2(b, (ex - 1)/2, n) ** 2 % n 
     
-assert power_rec2(7, 45, 17) == 6 
-
-
-assert power_bin(5, 65, 23) == power_rec(5, 65, 23) and power_bin(5, 65, 23) == power_rec2(5, 65, 23)
