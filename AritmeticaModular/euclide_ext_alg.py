@@ -68,3 +68,5 @@ if __name__ == '__main__':
         s, t = euclide_ext_alg(a, b)
         gcd = euclid_alg(a, b)
         assert a * s + b * t == gcd
+        
+    print(euclide_ext_alg(89, 232), euclid_alg(89, 232))

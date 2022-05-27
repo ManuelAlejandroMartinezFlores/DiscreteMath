@@ -1,5 +1,8 @@
 from euclide_ext_alg import *
 
+L_TO_N = {l:id for id, l in enumerate('abcdefghijklmnopqrstuvwxyz'.upper())}
+N_TO_L = {id:l for id, l in enumerate('abcdefghijklmnopqrstuvwxyz'.upper())}
+
 def hard_inverse(phi, e):
     for i in range(1, phi):
         if (e * i) % phi == 1:
@@ -8,7 +11,7 @@ def hard_inverse(phi, e):
 def text_to_ASCII(text):
     return [ord(x) for x in text]
 
-def padd(ascii, n = 256):
+def padd(ascii, n = 255):
     txt = str(ascii)
     return "0" * (len(str(n)) - len(txt)) + txt 
 
@@ -22,7 +25,7 @@ def get_coprime(phi, e=65637):
     
 def get_unit_size(n):
     for i in range(1, 100):
-        if int('256' * i) > n :
+        if int('255' * i) > n :
             return  i - 1
     
 def ascii_to_unit(data, unit_size):
@@ -42,5 +45,5 @@ def unit_to_ascii(data, unit_size):
             result.append(x[3 * i : 3 * (i + 1)])
     return result
 
-
-    
+def ascii_to_text(id):
+    return N_TO_L[id]

@@ -1,3 +1,8 @@
+'''
+Manuel Alejandro Martínez Flores
+Encriptación RSA
+'''
+
 from power import power_rec2 as mpow
 from euclide_ext_alg import *
 from util import *
@@ -35,14 +40,16 @@ class EncoderRSA:
         self.unit_size = get_unit_size(self.n)
 
     def encode_unit(self, unit):
-        return mpow(int(unit), self.e, self.n)
+        
+        p = mpow(int(unit), self.e, self.n)
+        return p
 
     def encode_text(self, txt):
         data = [padd(x) for x in text_to_ASCII(txt)]
         data = ascii_to_unit(data, self.unit_size)
         return " ".join([padd(self.encode_unit(x), self.n) for x in data])
 
-if __name__ == '__main__':
+def test():
     for p in [7793, 6269, 5683, 4441, 5153]:
         for q in [7793, 6269, 5683, 4441, 5153]:
             if p == q : continue
@@ -56,7 +63,78 @@ if __name__ == '__main__':
             et = e.encode_text(s)
             dt = d.decode_text(et)
             assert s[:100] == dt[:100]
-
+    print(dt)
+    
+    
+if __name__ == '__main__':
+    # opcion = -1
+    # while opcion != 0 and opcion != 1:
+    #     try:
+    #         opcion = int(input('Ingrese número correspondiente\n0 - Decodificar\n1 - Codificar\n'))
+    #     except:
+    #         pass
+        
+    # if opcion == 0:
+    #     p = 0
+    #     while p < 1:
+    #         try:
+    #             p = int(input('\nIngrese p\n'))
+    #         except:
+    #             pass
+    
+    #     q = 0
+    #     while q < 1:
+    #         try:
+    #             q = int(input('\nIngrese q\n'))
+    #         except:
+    #             pass  
+            
+    #     e = 0 
+    #     while e < 1:
+    #         try:
+    #             e = int(input('\nIngrese e\n'))
+    #         except:
+    #             pass 
+            
+        
+        
+    #     d = DecoderRSA(p, q, e)
+    #     opcion = -1
+    #     while opcion != 0 and opcion != 1:
+    #         try:
+    #             opcion = int(input('Ingrese número correspondiente\n0 - Mostrar llave\n1 - Decodificar\n'))
+    #         except:
+    #             pass
+            
+    #     if opcion == 0:
+    #         print('\nLlave pública\n', d.get_public_key())
+    #     else:
+    #         c = input('\nIngrese mensaje encriptado\n')
+    #         print('\nMensaje desencriptado:\n' + d.decode_text(c))
+        
+    # else:
+    #     n = 0
+    #     while n < 1:
+    #         try:
+    #             n = int(input('\nIngrese n\n'))
+    #         except:
+    #             pass
+    
+    #     e = 0
+    #     while e < 1:
+    #         try:
+    #             e = int(input('\nIngrese e\n'))
+    #         except:
+    #             pass  
+        
+    #     m = input('\nIngrese mensaje\n')
+        
+    #     e = EncoderRSA(n, e)
+        
+    #     print('\nMensaje encriptado\n' + e.encode_text(m))
+    
+    
+    test()
 
 
 
